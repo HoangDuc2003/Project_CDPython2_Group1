@@ -1,0 +1,172 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
+                                <form class="mx-1 mx-md-4" action="" method="POST">
+                                    {% csrf_token %}       
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" name="first_name" id="id_first_name" class="form-control" />
+                                            <label class="form-label" for="id_first_name">First name</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="id_last_name" name="last_name" class="form-control" />
+                                            <label class="form-label" for="id_last_name">Last name</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="id_username" name="username" class="form-control" />
+                                            <label class="form-label" for="id_username">Username</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="email" id="id_email" name="email" class="form-control" />
+                                            <label class="form-label" for="id_email">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="password" id="id_password1" class="form-control" />
+                                            <label class="form-label" for="id_password1" autocomplete="new-password" required="">Password</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="password" id="id_password2" class="form-control" />
+                                            <label class="form-label" name="password2" required="" autocomplete="new-password" for="id_password2">Repeat your password</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                    class="img-fluid" alt="Sample image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- <style>
+.btn-google {
+    color: #545454;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 1px #ddd
+}
+
+.or-container {
+    align-items: center;
+    color: #ccc;
+    display: flex;
+    margin: 25px 0
+}
+
+.line-separator {
+    background-color: #ccc;
+    flex-grow: 5;
+    height: 1px
+}
+
+.or-label {
+    flex-grow: 1;
+    margin: 0 15px;
+    text-align: center
+}
+</style>
+
+<div class="m-auto col-md-8">
+<div class="content-section">
+    <h3 class="border-bottom pb-3 mb-4">Join Today</h3>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <p>
+    <label for="id_first_name">First name:</label>
+    <input type="text" name="first_name" maxlength="150" id="id_first_name">
+  </p>
+
+  <p>
+    <label for="id_last_name">Last name:</label>
+    <input type="text" name="last_name" maxlength="150" id="id_last_name">
+  </p>
+
+  
+  <p>
+    <label for="id_username">Username:</label>
+    <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username">
+    
+      {% comment %} <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span> {% endcomment %}
+  </p>
+
+  <p>
+    <label for="id_email">Email:</label>
+    <input type="email" name="email" maxlength="320" required="" id="id_email">
+  </p>
+
+  <p>
+    <label for="id_password1">Password:</label>
+    <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+    
+      {% comment %} <span class="helptext"></span></p><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul> {% endcomment %}
+    
+  <p></p>
+
+  
+  <p>
+    <label for="id_password2">Password confirmation:</label>
+    <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+    
+      {% comment %} <span class="helptext">Enter the same password as before, for verification.</span> {% endcomment %}    
+  </p>
+            <script type="text/javascript" async="" src="https://www.gstatic.com/recaptcha/releases/-QbJqHfGOUB8nuVRLvzFLVed/recaptcha__en.js" crossorigin="anonymous" integrity="sha384-oyOrIfu0dTVXgJDnDwTkpAOw6OQnC6D4wN0pmPLvl75dXBhYohgWHMyv3Y05PPLU"></script><script src="https://www.google.com/recaptcha/api.js"></script>
+            
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Sign Up</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already Have an Account? <a class="ml-2" href="{% url 'account_login' %}">Sign In</a>
+        </small>
+    </div>
+</div>
+</div> -->
+{% endblock %}

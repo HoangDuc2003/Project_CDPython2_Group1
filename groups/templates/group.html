@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="col-lg-6">
+    <div class="central-meta">
+        <a class="btn btn-primary btn-lg align-text-bottom" href="{% url 'groups:create' %}" role="button"
+            aria-disabled="true">Them Group</a>
+        {% for group in page_group %}
+        <ul class="nearby-contct" style="background: #fff;border-radius: 25px;">
+            <!-- {% if request.user == groups.author.user %} -->
+            <!-- <a href="{% url 'posts:post-update' obj.pk %}"><button class="ui button bwhite-lg ">Update</button></a> -->
+            <!-- <a href="{% url 'groups:group-delete' group.pk %}"><button class="ui button bwhite-lg ">Delete</button></a> -->
+            <!-- {% endif %} -->
+            <div class="nearly-pepls">
+                <a href="{% url 'groups:delgr' group.id %}"><button class="ui button bwhite-lg ">Delete</button></a>
+                <div class="ui image">
+                    <a href="time-line.html" title=""><img src="/media/{{ group.avatar }}" alt=""></a>
+                </div>
+                <div class="pepl-info">
+                    <h4><a href="" title="">{{ group.name }}</a></h4>
+                    <span>{{ group.description_html|safe }}</span>
+                    <b>{{ group.members.count }} member{{ group.members.count|pluralize}}</b>
+                    {% if user in group.members.all %}
+                    <a href="{% url 'groups:leave' slug=group.slug %}" title="" class="btn btn-primary btn-lg"
+                        data-ripple="" class="">Leave</a>
+                    {% else %}
+                    <a href="{% url 'groups:join' slug=group.slug %}" title="" class="btn btn-primary btn-lg"
+                        data-ripple="" class="">join now</a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </ul>
+        {% endfor %}
+    </div><!-- photos -->
+</div><!-- centerl meta -->
+{% endblock content %}
